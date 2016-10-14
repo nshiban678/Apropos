@@ -1,0 +1,28 @@
+    The purpose of our project was to create a website in which we use python, javascript, php, SQL, and html to allow users to accept a user inputted prompt and return an 
+appropriate quote. All of our language choices are pretty standard for the uses we put them to. One our TFs recommended we do the data scraping in python so that is why we 
+did it in that instead of in javascript. Our project can be divided up into three parts: data scraping, making the algorithm for the search bar, and making the web pages. 
+    First is the data scraping part, in which we obtained data from various quote websites on the internet and stored that data onto phpmyadmin. For this part of the project 
+we used code written in python to two tables on phpmyadmin. The first table had a column for the topics of the quotes (anger, love, childhood, etc.) and a column for the 
+actual quotes themselves. The second table had a column for the same topics and a column for each of the words that showed up in the quotes belonging to each topic, and a 
+column for the frequencies of said words. For example, if the topic love consisted of two quotes with a total of fifteen words, the second table would have a topic column 
+where fifteen cells would have the value love, a words column where fifteen cells would each have one of the fifteen words in the two quotes, and occurrences column where 
+fifteen cells would each have the total number of times one of the fifteen words appeared in the topic love. The first table would have the same first column except it 
+would have two cells for the topic column with values love, and two cells in the quotes column where the values are the actual quotes themselves. 
+    The python code for the data scraping is in words.py. It requires the programmer to download Beautiful Soup and MySQLdb, as well as to, import urllib2 and string. We start 
+with an array of the topics in the website brainyquote.com that we want to have in our database. We use the function get_topic_quotes with a certain topic as the argument 
+to get all the quotes on a certain number of pages that we specify in the for loop. It returns these as an array. In the function get_quotes, the returned array of quotes 
+is set as the value of the key “topic” in the object “quotes”. Next, the function insert_quotes takes the object “quotes” as an argument and breaks apart each quote into 
+an array of single words. It then gets rid of punctuation in the words and creates an object called “wordmap” where the keys are the words and values are the number of 
+times they show up in the quotes of the specified topic. Insert_wordmap and make_quotelist use simple for loops and cursor.execute to input the data into a table in 
+phpmyadmin. We also chose to get rid of words that don’t add anything to the meaning such as “a”, “but”, “the”, etc.
+    In guess_topic.php we accept a $_POST value from the quote search form page. We first break it into an array of words. Then in the first foreach loop we get the sum of the 
+occurrences of all the words in each topic and use it to fill the object “sum.” In the next foreach loop we loop through the array of words created by taking the input 
+string, and make it so that we only have to query once by using the variable $part_of_query which represents a string that can be substituted into the SQL command. Through
+ our query we get the associative array $result. We then use $result to get the frequency of each word in the topic, and divide that by the total number of words in the
+ topic to get a probability. We put those probabilities into an associative array $probs which we then sort to have the highest probability as the first entry. We then take
+ the topic that has the highest probability and query again to get all of the rows in our database quotelist for that topic. 
+    In the second part of guess_topic.php where we’re looking into each topic for a more specific quote, we chose not to multiply the ratios of frequency to total number of
+ words in each quote because we thought it would make the website far too slow, so we chose to add them together instead thinking that this would be a decent substitute.
+ Otherwise, everything else is basically the same as when we were just trying to find the topic with the highest probability. We then use render to send the single quote
+ with the highest probability, and sorted $probs to be used in quote_display.php. Quote_display.php is the php page on which the quote is displayed
+
