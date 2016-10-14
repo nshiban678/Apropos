@@ -1,0 +1,35 @@
+**Apropos Documentation**
+
+Upon downloading the files, unzip them and place them in vhosts. Make a folder named "apropos" in vhosts. Within the "apropos" file create three folders:
+-includes
+-public
+-templates
+
+The quotes.sql file must also be included in apropos, thought it can go anywhere.
+
+Indexexp2.php, apology.php and quote_display.php should be in templates. Index.php, login.php, register.php, homepage2.css, words.py and guess_topic.php 
+should be in public. config.php, constants.php, functions.php should be in the includes folder. 
+
+words.py is the file in which the data from BrainyQuote.com is retrieved. It must get the quotes, get the words from each quote and place both into
+MySQL tables. To load the database, you must do the following in the terminal:
+
+cd ~/vhosts/apropos/public (if you didn't place it there in the previous step, this will not work)
+sudo python words.py
+
+You must also have downloaded and installed BeautifulSoup (4.3.2) and MySQL-python-1.2.4 because this is Python and you are in the appliance. Before they are
+installed, the program will stop and say that these files are not found. The data scraping uses BeautifulSoup to make scraping easier and more efficient.
+If you are having trouble figuring out which files you need, refer to what it imported at the top of the file. (urllib2 should already be installed) 
+
+The program will then load the words and quotes. It should take 5-10 minutes; be patient. Once it is done, you should have two tables with topics/words/occurences
+as one set of column headers and topics/quotes as a set of column headers in the other table. You have now loaded your database. These will form the core of 
+the program's quote retrieval and search algorithm. You will also eventually have one more table in 'quotes' in your database: users (where user information
+(i.e. name, email, password, favorite quote) will be stored. 
+
+Now, visit apropos/. You should be at the homepage. If not, you failed to place the files into vhosts in a folder called "apropos." The homepage was built in
+indexexp2.php and is rendered by the index.php controller. Here is where you can have fun with the program. What's on your mind? What's a question you want
+answered? Search it in the search bar in the middle of the page. With the click of a button, you should see a quote returned. 
+
+Apropos also returns related quotes for the user in case they need that added inspiration. These can be seen lower on the quote display page. The user
+can also rate the quote they get: did it suit their needs? Do they like the quote? Did it motivate (or should I say 'quote-ivate) you? 
+Rating allows them to express their satisfaction or dissatisfaction. Apropos also allows you to see particularly famous quotes or help you find 
+just the right quote for that Expos paper you've been working on. 

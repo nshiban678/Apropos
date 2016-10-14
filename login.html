@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<link rel='stylesheet' href='login.css' type='text/css' />  
+<META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="http://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" type="text/css">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Form Validation</title>
+
+
+<div id="header"> 
+
+    <ul>
+	    <li><a href="file:///home/jharvard/Downloads/dist/OurProject1/indexexp2.html">Home</a></li>
+	    <li  id="selected"><a href="file:///home/jharvard/Downloads/dist/OurProject1/login.html">Log in</a></li>
+	    <li><a href="file:///home/jharvard/Downloads/dist/OurProject1/register.html">Register</a></li>
+    </ul>
+
+</div>
+
+<script type="text/javascript">
+function validateForm()
+{
+	var user=document.login.username.value;
+	var user=user.trim();
+	var pass=document.login.password.value;
+ 
+	if(user == '')
+	{
+		document.getElementById('error').innerHTML="Please Enter Username";
+		return false;
+	}
+ 
+	if(pass == '')
+	{
+		document.getElementById('error').innerHTML="Please Enter Password";
+		return false;
+	}
+}
+</script>
+</head>
+<body>
+
+
+			
+            
+<form id="login" name="login" method="post" action="login.php" onsubmit="return validateForm()">
+	
+	<div id = "title">Login Form</div>
+	<div id="error"></div>
+	<table width="510" border="0" align="center">
+		<tr>
+			<td>Username:</td>
+			<td><input type="text" name="username" id="username" placeholder="Username"/></td>
+		</tr>
+		<tr>
+			<td>Password:</td>
+			<td><input type="password" name="password" id="password" placeholder="Password" /></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="submit"  name="button" id="button" class="btn" value="Submit" /></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>  -->
+<!--<html lang="en"><head>  -->
+<!--<meta charset="utf-8">  -->
+<!--<title>Registration form to Apropos</title>   -->
+<!--<link rel='stylesheet' href='register.css' type='text/css' />  -->
+<!--<META http-equiv="Content-Type" content="text/html; charset=utf-8">-->
+<!--<link href="http://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet" type="text/css">-->
+<!--<link href="http://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" type="text/css">-->
+<!--<script src="register.js"></script>  -->
+<!--</head>  -->
+<!--<body>-->
+
+<!--<embed height="0" width="0" src="http://www.aleure.com/cooltune.mp3">  -->
+<!--<div id="header"> -->
+
+<!--    <ul>-->
+<!--	    <li><a href="http://www.brainyquote.com/quotes_of_the_day.html">Quote of the Day</a></li>-->
+<!--	    <li><a href="file:///home/jharvard/OurProject/indexexp.html">Home</a></li>-->
+<!--	    <li  id="selected"><a href="file:///home/jharvard/OurProject/login.html">Log in</a></li>-->
+<!--	    <li><a href="file:///home/jharvard/OurProject/register.html">Register</a></li>-->
+<!--    </ul>-->
+
+<!--</div>-->
+
+<!--<div>-->
+<!--    <h1>Log in</h1>  -->
+<!--    <p>Use tab keys to move from one input field to the next.</p>  -->
+<!--        <form name='registration' onSubmit="return formValidation();">  -->
+<!--        <ul>  -->
+<!--            <li><label for="userid"></label></li>  -->
+<!--            <li><input type="text" name="userid" size="12" placeholder="User id" /></li>  -->
+<!--            <li><label for="passid"></label></li>  -->
+<!--            <li><input type="password" name="passid" size="12" placeholder="Password" /></li>  -->
+<!--            <li><input type="submit" name="submit" value="Submit" /></li>  -->
+<!--        </ul>  -->
+<!--        </form>-->
+<!--</div>  -->
+
+<!--</body>  -->
+<!--</html>  -->
